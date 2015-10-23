@@ -1,0 +1,28 @@
+{
+  "name": "todo_challenge",
+  "homepage": "https://github.com/jongmin141215/todo_challenge",
+  "authors": [
+    "Jongmin Kim <kjm141215@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.5",
+    "angular": "~1.4.7",
+    "angular-resource": "~1.4.7"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.7",
+    "angular-route": "~1.4.7"
+  }
+}
