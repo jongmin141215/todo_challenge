@@ -19,7 +19,5 @@ toDoList.controller('ToDoListController', [function() {
       return 'completed'
     }
   }
-  // self.addCompleteClass = function() {
-  //   $(self).addClass('complete');
-  // }
+
 }]);

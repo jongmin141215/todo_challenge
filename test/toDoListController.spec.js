@@ -39,7 +39,9 @@ describe('ToDoListController', function() {
     ctrl.taskName = 'Weekend challenge'
     ctrl.taskDescription = 'Creating todoList using AngularJS'
     ctrl.addTask();
-    ctrl.completeTask(0);
-    expect(ctrl.tasks[0].complete).toBe(true);
+    ctrl.tasks[0].complete = true;
+    expect(ctrl.className(0)).toBe('completed');
+    ctrl.tasks[0].complete = false;
+    expect(ctrl.className(0)).toBe(undefined);
   })
 });
