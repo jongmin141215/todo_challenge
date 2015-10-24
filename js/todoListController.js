@@ -14,10 +14,6 @@ toDoList.controller('ToDoListController', [function() {
     })
   }
 
-  self.completeTask = function(index) {
-    self.tasks[index].complete = true;
-  }
-
   self.className = function(index) {
     if (self.tasks[index].complete) {
       return 'completed'
