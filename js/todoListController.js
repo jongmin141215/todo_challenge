@@ -20,4 +20,9 @@ toDoList.controller('ToDoListController', [function() {
     }
   }
 
+  self.clearInputBox = function() {
+    self.taskName = null;
+    self.taskDescription = null;
+  }
+
 }]);

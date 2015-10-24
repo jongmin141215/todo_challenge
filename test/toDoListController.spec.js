@@ -44,4 +44,12 @@ describe('ToDoListController', function() {
     ctrl.tasks[0].complete = false;
     expect(ctrl.className(0)).toBe(undefined);
   })
+
+  it('clear input box contents', function() {
+    ctrl.taskName = 'Weekend challenge';
+    ctrl.taskDescription = 'Creating todoList using AngularJS';
+    ctrl.clearInputBox();
+    expect(ctrl.taskName).toBeNull();
+    expect(ctrl.taskDescription).toBeNull();
+  })
 });

@@ -5,6 +5,7 @@ describe('TodoList', function() {
   var button = element(by.className('btn'))
   var tasks = element.all(by.repeater('task in listCtrl.tasks'))
   var checkBox = element(by.className('checkbox'))
+  var deleteButton = element(by.className('delete'))
   beforeEach(function() {
     browser.get('http://localhost:8080');
   })
@@ -33,4 +34,5 @@ describe('TodoList', function() {
     checkBox.click();
     expect(tasks.getAttribute('class')).toMatch('completed');
   })
+
 })
