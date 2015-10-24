@@ -6,6 +6,15 @@ describe('ToDoListController', function() {
     ctrl = $controller('ToDoListController');
   }));
 
+  var task = { name: 'Weekend challenge',
+    description: 'Creating todoList using AngularJS',
+    complete: false
+  }
+  var task2 = { name: 'Calling my mom',
+    description: 'Asking her well-being',
+    complete: false
+  }
+
   it('initializes with an empty todo list', function() {
     expect(ctrl.task).toBeUndefined();
   })
@@ -13,11 +22,24 @@ describe('ToDoListController', function() {
   it('displays a task', function() {
     ctrl.taskName = 'Weekend challenge'
     ctrl.taskDescription = 'Creating todoList using AngularJS'
+    expect(ctrl.getTasks()).toEqual([task]);
+  })
 
-    var task = { name: 'Weekend challenge',
-      description: 'Creating todoList using AngularJS'
-    }
+  it('can add more tasks', function() {
+    ctrl.taskName = 'Weekend challenge';
+    ctrl.taskDescription = 'Creating todoList using AngularJS';
+    ctrl.getTasks();
+    ctrl.taskName = 'Calling my mom';
+    ctrl.taskDescription = 'Asking her well-being';
+    ctrl.getTasks();
+    expect(ctrl.tasks).toEqual([task, task2])
+  })
 
-    expect(ctrl.getTasks()[0]).toEqual(task);
+  it('changes complete status from false to true', function() {
+    ctrl.taskName = 'Weekend challenge'
+    ctrl.taskDescription = 'Creating todoList using AngularJS'
+    ctrl.addTask();
+    ctrl.completeTask(0);
+    expect(ctrl.tasks[0].complete).toBe(true);
   })
 });

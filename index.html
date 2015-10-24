@@ -17,8 +17,12 @@
       <input ng-click="listCtrl.getTasks()" class="btn" type="submit" value="Save">
     </form>
 
-    <ul ng-repeat="task in listCtrl.tasks">
-      <li>{{task.name}}</li>
+    <ul>
+      <li ng-repeat="task in listCtrl.tasks" ng-class="listCtrl.className($index)">
+        <input ng-model="listCtrl.tasks.complete" ng-change="listCtrl.completeTask($index)" type="checkbox">
+        {{task.name}}
+      </li>
+      <!-- <li>{{task.complete}}</li> -->
       <!-- <li>{{task.description}}</li> -->
     </ul>
   </body>
