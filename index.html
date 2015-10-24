@@ -14,14 +14,14 @@
     <form>
       <input ng-model="listCtrl.taskName" type="text" placeholder="What do you need to do?">
       <input ng-model="listCtrl.taskDescription" type="text">
-      <input ng-click="listCtrl.getTasks(); listCtrl.clearInputBox()" class="btn" type="submit" value="Save">
+      <input ng-click="listCtrl.getTasks(); listCtrl.clearInputBox()" class="btn save" type="submit" value="Save">
     </form>
 
     <ul>
       <li ng-repeat="task in listCtrl.tasks" ng-class="listCtrl.className($index)">
-        <input type="checkbox" class="checkbox" ng-model="listCtrl.tasks[$index].complete">
+        <input type="checkbox" id="checkbox{{$index}}" ng-model="listCtrl.tasks[$index].complete">
         {{task.name}}
-        <input type="submit" class="delete btn" value="Delete" ng-click="listCtrl.deleteTask($index)">
+        <input type="submit" class="btn" id="delete{{$index}}" value="Delete" ng-click="listCtrl.deleteTask($index)">
       </li>
       <!-- <li>{{task.complete}}</li> -->
       <!-- <li>{{task.description}}</li> -->
