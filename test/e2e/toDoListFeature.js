@@ -4,7 +4,7 @@ describe('TodoList', function() {
   var descriptionInput = element(by.model('listCtrl.taskDescription'))
   var button = element(by.className('btn'))
   var tasks = element.all(by.repeater('task in listCtrl.tasks'))
-  var checkBox = element(by.model('listCtrl.tasks.complete'))
+  var checkBox = element(by.className('checkbox'))
   beforeEach(function() {
     browser.get('http://localhost:8080');
   })
