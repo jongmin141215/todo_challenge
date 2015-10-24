@@ -25,4 +25,8 @@ toDoList.controller('ToDoListController', [function() {
     self.taskDescription = null;
   }
 
+  self.deleteTask = function(index) {
+    self.tasks.splice(index, 1);
+  }
+
 }]);

@@ -52,4 +52,12 @@ describe('ToDoListController', function() {
     expect(ctrl.taskName).toBeNull();
     expect(ctrl.taskDescription).toBeNull();
   })
+
+  it('can delete a task', function() {
+    ctrl.taskName = 'Weekend challenge';
+    ctrl.taskDescription = 'Creating todoList using AngularJS';
+    ctrl.getTasks();
+    ctrl.deleteTask(0);
+    expect(ctrl.tasks).toEqual([]);
+  })
 });

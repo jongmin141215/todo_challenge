@@ -35,4 +35,11 @@ describe('TodoList', function() {
     expect(tasks.getAttribute('class')).toMatch('completed');
   })
 
+  it('can delete tasks', function() {
+    taskInput.sendKeys('Weekend challenge');
+    descriptionInput.sendKeys('Creating todoList using AngularJS');
+    button.click();
+    deleteButton.click();
+    expect(tasks.getText()).toEqual([]);
+  })
 })
