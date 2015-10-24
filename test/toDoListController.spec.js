@@ -15,7 +15,7 @@ describe('ToDoListController', function() {
     ctrl.taskDescription = 'Creating todoList using AngularJS'
 
     var task = { name: 'Weekend challenge',
-      // description: 'Creating todoList using AngularJS'
+      description: 'Creating todoList using AngularJS'
     }
 
     expect(ctrl.getTasks()[0]).toEqual(task);
