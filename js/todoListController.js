@@ -1,7 +1,20 @@
 toDoList.controller('ToDoListController', [function() {
   var self = this;
 
-  self.tasks = []
+  self.storeTasks = function() {
+    window.localStorage.setItem('storedTasks', JSON.stringify(self.tasks));
+  }
+
+  self.getTasks = function() {
+    val = window.localStorage.getItem('storedTasks')
+    if(val) {
+      return JSON.parse(val)
+    } else {
+      return []
+    }
+  }
+
+  self.tasks = self.getTasks()
   self.filtered = self.tasks;
 
   self.addTask = function() {
@@ -12,6 +25,7 @@ toDoList.controller('ToDoListController', [function() {
         complete: false
       })
     }
+    self.storeTasks();
     return self.tasks
   }
 
@@ -35,6 +49,7 @@ toDoList.controller('ToDoListController', [function() {
       self.tasks.splice(index, 1);
       self.filtered.splice(findex, 1);
     }
+    self.storeTasks();
   }
 
   self.filterTasks = function(filter) {
@@ -63,5 +78,10 @@ toDoList.controller('ToDoListController', [function() {
     } else {
       return arr.length + ' tasks left';
     }
+  }
+
+  self.onTaskUpdate = function() {
+    console.log('checkbox stored')
+    self.storeTasks();
   }
 }]);
