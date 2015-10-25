@@ -2,19 +2,16 @@ toDoList.controller('ToDoListController', [function() {
   var self = this;
   self.tasks = []
   self.filtered = self.tasks;
-  self.getTasks = function() {
-    self.addTask(self.taskName, self.taskDescription);
-    return self.tasks
-  }
 
-  self.addTask = function(taskName, taskDescription) {
-    if (taskName) {
+  self.addTask = function() {
+    if (self.taskName) {
       self.tasks.push({
-        name: taskName,
-        description: taskDescription,
+        name: self.taskName,
+        description: self.taskDescription,
         complete: false
       })
     }
+    return self.tasks
   }
 
   self.className = function(task) {

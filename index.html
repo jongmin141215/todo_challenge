@@ -14,7 +14,7 @@
     <form>
       <input ng-model="listCtrl.taskName" type="text" placeholder="What do you need to do?">
       <input ng-model="listCtrl.taskDescription" type="text">
-      <input ng-click="listCtrl.getTasks(); listCtrl.clearInputBox()" class="btn save" type="submit" value="Save">
+      <input ng-click="listCtrl.addTask(); listCtrl.clearInputBox()" class="btn save" type="submit" value="Save">
     </form>
     <a id="all" ng-click="listCtrl.filterTasks()">All</a>
     <a id="active" ng-click="listCtrl.filterTasks(false)">Active</a>
