@@ -1,7 +1,7 @@
 toDoList.controller('ToDoListController', [function() {
   var self = this;
   self.tasks = []
-
+  self.filtered = self.tasks;
   self.getTasks = function() {
     self.addTask(self.taskName, self.taskDescription);
     return self.tasks
@@ -15,8 +15,8 @@ toDoList.controller('ToDoListController', [function() {
     })
   }
 
-  self.className = function(index) {
-    if (self.tasks[index].complete) {
+  self.className = function(task) {
+    if (task.complete) {
       return 'completed'
     }
   }
@@ -26,11 +26,13 @@ toDoList.controller('ToDoListController', [function() {
     self.taskDescription = null;
   }
 
-  self.deleteTask = function(index) {
+  self.deleteTask = function(task) {
+    var index = self.tasks.indexOf(task);
     self.tasks.splice(index, 1);
+    // var findex = self.filtered.indexOf(task);
+    // self.filtered.splice(findex, 1);
+    return self.tasks
   }
-
-  self.filtered = self.tasks;
 
   self.filterTasks = function(filter) {
     if(filter === undefined) {

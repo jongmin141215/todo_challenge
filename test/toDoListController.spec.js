@@ -34,35 +34,28 @@ describe('ToDoListController', function() {
   })
 
   it('changes complete status from false to true', function() {
-    ctrl.taskName = 'Weekend challenge'
-    ctrl.taskDescription = 'Creating todoList using AngularJS'
-    ctrl.addTask();
+    ctrl.addTask('Weekend challenge', 'Creating todoList using AngularJS');
     ctrl.tasks[0].complete = true;
-    expect(ctrl.className(0)).toBe('completed');
+    expect(ctrl.className(ctrl.tasks[0])).toBe('completed');
     ctrl.tasks[0].complete = false;
     expect(ctrl.className(0)).toBe(undefined);
   })
 
   it('clear input box contents', function() {
-    ctrl.taskName = 'Weekend challenge';
-    ctrl.taskDescription = 'Creating todoList using AngularJS';
+    ctrl.addTask('Weekend challenge', 'Creating todoList using AngularJS');
     ctrl.clearInputBox();
     expect(ctrl.taskName).toBeNull();
     expect(ctrl.taskDescription).toBeNull();
   })
 
   it('can delete a task', function() {
-    ctrl.taskName = 'Weekend challenge';
-    ctrl.taskDescription = 'Creating todoList using AngularJS';
-    ctrl.getTasks();
+    ctrl.addTask('Weekend challenge', 'Creating todoList using AngularJS');
     ctrl.deleteTask(0);
     expect(ctrl.tasks).toEqual([]);
   })
 
   it('can display all items', function() {
-    ctrl.taskName = 'Weekend challenge';
-    ctrl.taskDescription = 'Creating todoList using AngularJS';
-    ctrl.getTasks();
+    ctrl.addTask('Weekend challenge', 'Creating todoList using AngularJS');
     ctrl.taskName = 'Calling my mom';
     ctrl.taskDescription = 'Asking her well-being';
     ctrl.getTasks();
@@ -70,9 +63,7 @@ describe('ToDoListController', function() {
   })
 
   it('can filter active tasks', function() {
-    ctrl.taskName = 'Weekend challenge';
-    ctrl.taskDescription = 'Creating todoList using AngularJS';
-    ctrl.getTasks();
+    ctrl.addTask('Weekend challenge', 'Creating todoList using AngularJS');
     ctrl.taskName = 'Calling my mom';
     ctrl.taskDescription = 'Asking her well-being';
     ctrl.getTasks();
@@ -81,9 +72,7 @@ describe('ToDoListController', function() {
   })
 
   it('can filter completed tasks', function() {
-    ctrl.taskName = 'Weekend challenge';
-    ctrl.taskDescription = 'Creating todoList using AngularJS';
-    ctrl.getTasks();
+    ctrl.addTask('Weekend challenge', 'Creating todoList using AngularJS');
     ctrl.taskName = 'Calling my mom';
     ctrl.taskDescription = 'Asking her well-being';
     ctrl.getTasks();

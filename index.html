@@ -20,10 +20,10 @@
     <a id="active" ng-click="listCtrl.filterTasks(false)">Active</a>
     <a id="completed" ng-click="listCtrl.filterTasks(true)">Completed</a>
     <ul>
-      <li ng-repeat="task in listCtrl.filtered" ng-class="listCtrl.className($index)">
-        <input type="checkbox" id="checkbox{{$index}}" ng-model="listCtrl.tasks[$index].complete">
+      <li ng-repeat="task in listCtrl.filtered" ng-class="listCtrl.className(task)">
+        <input type="checkbox" id="checkbox{{$index}}" ng-model="task.complete">
         {{task.name}}
-        <input type="submit" class="btn" id="delete{{$index}}" value="Delete" ng-click="listCtrl.deleteTask($index)">
+        <input type="submit" class="btn" id="delete{{$index}}" value="Delete" ng-click="listCtrl.deleteTask(task); listCtrl.filterTasks(true)">
       </li>
       <!-- <li>{{task.complete}}</li> -->
       <!-- <li>{{task.description}}</li> -->
