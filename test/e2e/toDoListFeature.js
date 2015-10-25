@@ -3,11 +3,14 @@ describe('TodoList', function() {
   var taskInput = element(by.model('listCtrl.taskName'))
   var descriptionInput = element(by.model('listCtrl.taskDescription'))
   var button = element(by.className('save'))
-  var tasks = element.all(by.repeater('task in listCtrl.tasks'))
+  var tasks = element.all(by.repeater('task in listCtrl.filtered'))
   var checkBox = element(by.id('checkbox0'))
   var checkBox1 = element(by.id('checkbox1'))
   var checkBox2 = element(by.id('checkbox2'))
   var deleteButton = element(by.id('delete0'))
+  var activeButton = element(by.id('active'))
+  var completedButton = element(by.id('completed'))
+  var allButton = element(by.id('all'))
   beforeEach(function() {
     browser.get('http://localhost:8080');
   })
@@ -45,20 +48,34 @@ describe('TodoList', function() {
     expect(tasks.getText()).toEqual([]);
   })
 
-  it('can only display not-completed tasks', function() {
-    taskInput.sendKeys('Weekend challenge');
-    button.click();
-    taskInput.sendKeys('Calling my mom');
-    button.click();
-    taskInput.sendKeys('Buying mangos');
-    button.click();
-    taskInput.sendKeys('Buying bodywash');
-    button.click();
-    checkBox1.click();
-    checkBox2.click();
+  describe('filtering tasks', function() {
+    beforeEach(function() {
+      browser.get('http://localhost:8080');
+      taskInput.sendKeys('Weekend challenge');
+      button.click();
+      taskInput.sendKeys('Calling my mom');
+      button.click();
+      taskInput.sendKeys('Buying mangos');
+      button.click();
+      taskInput.sendKeys('Buying bodywash');
+      button.click();
+      checkBox1.click();
+      checkBox2.click();
+    })
 
+    it('displays all tasks', function() {
+      allButton.click();
+      expect(tasks.getText()).toEqual(['Weekend challenge', 'Calling my mom', 'Buying mangos','Buying bodywash'])
+    })
 
+    it('can only display not-completed tasks', function() {
+      activeButton.click();
+      expect(tasks.getText()).toEqual(['Weekend challenge', 'Buying bodywash'])
+    })
+
+    it('can only display completed tasks', function() {
+      completedButton.click();
+      expect(tasks.getText()).toEqual(['Calling my mom', 'Buying mangos'])
+    })
   })
-
-
 })
