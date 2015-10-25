@@ -51,4 +51,19 @@ toDoList.controller('ToDoListController', [function() {
     return self.filtered = arr;
   }
 
+  self.countTasks = function() {
+    arr = [];
+    for(var i=0; i < self.tasks.length; i++) {
+      if (!self.tasks[i].complete) {
+        arr.push(self.tasks[i])
+      }
+    }
+    if (arr.length === 1) {
+      return arr.length + ' task left';
+    } else {
+      return arr.length + ' tasks left';
+    }
+  }
+
+
 }]);

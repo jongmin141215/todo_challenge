@@ -14,6 +14,7 @@ describe('TodoList', function() {
   var activeButton = element(by.id('active'))
   var completedButton = element(by.id('completed'))
   var allButton = element(by.id('all'))
+  var remainingTasks = element(by.id('remainingTasks'))
   beforeEach(function() {
     browser.get('http://localhost:8080');
   })
@@ -107,6 +108,22 @@ describe('TodoList', function() {
       activeButton.click()
       deleteButton1.click();
       expect(tasks.getText()).toEqual(['Weekend challenge']);
+    })
+  })
+
+  describe('displaying the number of active tasks', function() {
+    beforeEach(function() {
+      browser.get('http://localhost:8080');
+    })
+
+    it('displays 1 when there is one task remaining', function() {
+      taskInput.sendKeys('Weekend challenge');
+      button.click();
+      expect(remainingTasks.getText()).toEqual('1 task left')
+    })
+
+    it('displays "tasks" when remaning task is not 1', function() {
+      expect(remainingTasks.getText()).toEqual('0 tasks left');
     })
   })
 })

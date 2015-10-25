@@ -56,30 +56,35 @@ describe('ToDoListController', function() {
 
   it('can display all items', function() {
     ctrl.addTask('Weekend challenge', 'Creating todoList using AngularJS');
-    ctrl.taskName = 'Calling my mom';
-    ctrl.taskDescription = 'Asking her well-being';
-    ctrl.getTasks();
+    ctrl.addTask('Calling my mom', 'Asking her well-being');
     expect(ctrl.filterTasks()).toEqual(tasks)
   })
 
   it('can filter active tasks', function() {
     ctrl.addTask('Weekend challenge', 'Creating todoList using AngularJS');
-    ctrl.taskName = 'Calling my mom';
-    ctrl.taskDescription = 'Asking her well-being';
-    ctrl.getTasks();
+    ctrl.addTask('Calling my mom', 'Asking her well-being');
     ctrl.tasks[0].complete = true;
     expect(ctrl.filterTasks(false)).toEqual([tasks[1]])
   })
 
   it('can filter completed tasks', function() {
     ctrl.addTask('Weekend challenge', 'Creating todoList using AngularJS');
-    ctrl.taskName = 'Calling my mom';
-    ctrl.taskDescription = 'Asking her well-being';
-    ctrl.getTasks();
+    ctrl.addTask('Calling my mom', 'Asking her well-being');
     ctrl.tasks[0].complete = true;
     expect(ctrl.filterTasks(true)).toEqual([  { name: 'Weekend challenge',
         description: 'Creating todoList using AngularJS',
         complete: true
       }])
   })
+  describe('counting tasks', function() {
+    it('returns 1 when there is one task left', function() {
+      ctrl.addTask('Weekend challenge', 'Creating todoList using AngularJS');
+      expect(ctrl.countTasks()).toEqual('1 task left');
+    })
+
+    it('returns "0 tasks left" when there are no tasks left', function() {
+      expect(ctrl.countTasks()).toEqual('0 tasks left');
+    })
+  })
+
 });
