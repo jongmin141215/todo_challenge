@@ -28,10 +28,13 @@ toDoList.controller('ToDoListController', [function() {
 
   self.deleteTask = function(task) {
     var index = self.tasks.indexOf(task);
-    self.tasks.splice(index, 1);
-    // var findex = self.filtered.indexOf(task);
-    // self.filtered.splice(findex, 1);
-    return self.tasks
+    var findex = self.filtered.indexOf(task);
+    if (self.tasks === self.filtered) {
+      self.tasks.splice(index, 1);
+    } else {
+      self.tasks.splice(index, 1);
+      self.filtered.splice(findex, 1);
+    }
   }
 
   self.filterTasks = function(filter) {

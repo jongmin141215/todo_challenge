@@ -8,6 +8,9 @@ describe('TodoList', function() {
   var checkBox1 = element(by.id('checkbox1'))
   var checkBox2 = element(by.id('checkbox2'))
   var deleteButton = element(by.id('delete0'))
+  var deleteButton1 = element(by.id('delete1'))
+  var deleteButton2 = element(by.id('delete2'))
+  var deleteButton3 = element(by.id('delete3'))
   var activeButton = element(by.id('active'))
   var completedButton = element(by.id('completed'))
   var allButton = element(by.id('all'))
@@ -79,5 +82,31 @@ describe('TodoList', function() {
     })
   })
 
+  describe('deleting tasks when filtered', function() {
+    beforeEach(function() {
+      browser.get('http://localhost:8080');
+      taskInput.sendKeys('Weekend challenge');
+      button.click();
+      taskInput.sendKeys('Calling my mom');
+      button.click();
+      taskInput.sendKeys('Buying mangos');
+      button.click();
+      taskInput.sendKeys('Buying bodywash');
+      button.click();
+      checkBox1.click();
+      checkBox2.click();
+    })
 
+    it('deletes specific tasks when there are no filters', function() {
+      deleteButton3.click();
+      deleteButton2.click();
+      expect(tasks.getText()).toEqual(['Weekend challenge', 'Calling my mom']);
+    })
+
+    it('deletes specific tasks when there is the active filter', function() {
+      activeButton.click()
+      deleteButton1.click();
+      expect(tasks.getText()).toEqual(['Weekend challenge']);
+    })
+  })
 })

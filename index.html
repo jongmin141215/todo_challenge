@@ -23,7 +23,7 @@
       <li ng-repeat="task in listCtrl.filtered" ng-class="listCtrl.className(task)">
         <input type="checkbox" id="checkbox{{$index}}" ng-model="task.complete">
         {{task.name}}
-        <input type="submit" class="btn" id="delete{{$index}}" value="Delete" ng-click="listCtrl.deleteTask(task); listCtrl.filterTasks(true)">
+        <input type="submit" class="btn" id="delete{{$index}}" value="Delete" ng-click="listCtrl.deleteTask(task)">
       </li>
       <!-- <li>{{task.complete}}</li> -->
       <!-- <li>{{task.description}}</li> -->
