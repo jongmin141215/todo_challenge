@@ -8,11 +8,13 @@ toDoList.controller('ToDoListController', [function() {
   }
 
   self.addTask = function(taskName, taskDescription) {
-    self.tasks.push({
-      name: taskName,
-      description: taskDescription,
-      complete: false
-    })
+    if (taskName) {
+      self.tasks.push({
+        name: taskName,
+        description: taskDescription,
+        complete: false
+      })
+    }
   }
 
   self.className = function(task) {

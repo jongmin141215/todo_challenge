@@ -18,19 +18,19 @@ describe('ToDoListController', function() {
   ]
 
   it('displays a task', function() {
-    ctrl.taskName = 'Weekend challenge'
-    ctrl.taskDescription = 'Creating todoList using AngularJS'
-    expect(ctrl.getTasks()).toEqual([tasks[0]]);
+    ctrl.addTask('Weekend challenge', 'Creating todoList using AngularJS');
+    expect(ctrl.tasks).toEqual([tasks[0]]);
   })
 
   it('can add more tasks', function() {
-    ctrl.taskName = 'Weekend challenge';
-    ctrl.taskDescription = 'Creating todoList using AngularJS';
-    ctrl.getTasks();
-    ctrl.taskName = 'Calling my mom';
-    ctrl.taskDescription = 'Asking her well-being';
-    ctrl.getTasks();
+    ctrl.addTask('Weekend challenge', 'Creating todoList using AngularJS');
+    ctrl.addTask('Calling my mom', 'Asking her well-being');
     expect(ctrl.tasks).toEqual(tasks)
+  })
+
+  it('does not accept an empty task', function() {
+    ctrl.addTask('', '');
+    expect(ctrl.tasks).toEqual([]);
   })
 
   it('changes complete status from false to true', function() {

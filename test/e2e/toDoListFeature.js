@@ -126,4 +126,9 @@ describe('TodoList', function() {
       expect(remainingTasks.getText()).toEqual('0 tasks left');
     })
   })
+
+  it('does not accept an empty task', function() {
+    button.click();
+    expect(remainingTasks.getText()).toEqual('0 tasks left');
+  })
 })
