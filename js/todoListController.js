@@ -1,5 +1,6 @@
 toDoList.controller('ToDoListController', [function() {
   var self = this;
+
   self.tasks = []
   self.filtered = self.tasks;
 
@@ -63,6 +64,4 @@ toDoList.controller('ToDoListController', [function() {
       return arr.length + ' tasks left';
     }
   }
-
-
 }]);

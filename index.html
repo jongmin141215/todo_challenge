@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>TodoList</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -11,23 +12,29 @@
     <script src="js/todoListController.js"></script>
   </head>
   <body class="container" ng-controller="ToDoListController as listCtrl">
-    <form>
-      <input ng-model="listCtrl.taskName" type="text" placeholder="What do you need to do?">
-      <input ng-model="listCtrl.taskDescription" type="text">
-      <input ng-click="listCtrl.addTask(); listCtrl.clearInputBox()" class="btn save" type="submit" value="Save">
-    </form>
-    <a id="all" ng-click="listCtrl.filterTasks()">All</a>
-    <a id="active" ng-click="listCtrl.filterTasks(false)">Active</a>
-    <a id="completed" ng-click="listCtrl.filterTasks(true)">Completed</a>
-    <ul>
-      <li ng-repeat="task in listCtrl.filtered" ng-class="listCtrl.className(task)">
-        <input type="checkbox" id="checkbox{{$index}}" ng-model="task.complete">
-        {{task.name}}
-        <input type="submit" class="btn" id="delete{{$index}}" value="Delete" ng-click="listCtrl.deleteTask(task)">
-      </li>
-      <!-- <li>{{task.complete}}</li> -->
-      <!-- <li>{{task.description}}</li> -->
-    </ul>
-    <div id="remainingTasks">{{listCtrl.countTasks()}}</div>
+    <div class="panel panel-danger">
+      <div class="panel-heading"><b><h3>Jongmin's Todo List</h3></b></div>
+      <div class="panel-body">
+        <form>
+          <input ng-model="listCtrl.taskName" type="text" placeholder="What do you need to do?" class="form-control" autofocus>
+          <input ng-click="listCtrl.addTask(); listCtrl.clearInputBox()" class="btn btn-danger save" type="submit" value="Add Task">
+        </form>
+        <a id="all" ng-click="listCtrl.filterTasks()"><div class="filter">All</div></a>
+        <a id="active" ng-click="listCtrl.filterTasks(false)"><div class="filter">Active</div></a>
+        <a id="completed" ng-click="listCtrl.filterTasks(true)"><div class="filter"><span>Completed<span></div></a>
+        <ul id="list">
+          <li ng-repeat="task in listCtrl.filtered" ng-class="listCtrl.className(task)" class="panel">
+            <div class="task">
+              <input type="checkbox" id="checkbox{{$index}}" ng-model="task.complete">
+              {{task.name}}
+            </div>
+            <div class="deleteButton">
+              <input type="submit" class="btn btn-danger" id="delete{{$index}}" value="Delete" ng-click="listCtrl.deleteTask(task)">
+            </div>
+          </li>
+        </ul>
+        <div id="remainingTasks">{{listCtrl.countTasks()}}</div>
+      </div>
+    </div>
   </body>
 </html>

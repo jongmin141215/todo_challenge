@@ -1,7 +1,6 @@
 describe('TodoList', function() {
 
   var taskInput = element(by.model('listCtrl.taskName'))
-  var descriptionInput = element(by.model('listCtrl.taskDescription'))
   var button = element(by.className('save'))
   var tasks = element.all(by.repeater('task in listCtrl.filtered'))
   var checkBox = element(by.id('checkbox0'))
@@ -17,37 +16,26 @@ describe('TodoList', function() {
   var remainingTasks = element(by.id('remainingTasks'))
   beforeEach(function() {
     browser.get('http://localhost:8080');
-  })
-  it('displays a task', function() {
-
     taskInput.sendKeys('Weekend challenge');
-    // descriptionInput.sendKeys('Creating todoList using AngularJS');
     button.click();
+  })
+
+  it('displays a task', function() {
     expect(tasks.first().getText()).toEqual('Weekend challenge');
   })
 
   it('displays multiple tasks', function() {
-    taskInput.sendKeys('Weekend challenge');
-    // descriptionInput.sendKeys('Creating todoList using AngularJS');
-    button.click();
-    taskInput.clear();
     taskInput.sendKeys('Calling my mom');
     button.click();
     expect(tasks.getText()).toEqual(['Weekend challenge', 'Calling my mom'])
   })
 
   it('displays whether the task is finished using checkbox', function() {
-    taskInput.sendKeys('Weekend challenge');
-    descriptionInput.sendKeys('Creating todoList using AngularJS');
-    button.click();
     checkBox.click();
     expect(tasks.getAttribute('class')).toMatch('completed');
   })
 
   it('can delete a task', function() {
-    taskInput.sendKeys('Weekend challenge');
-    descriptionInput.sendKeys('Creating todoList using AngularJS');
-    button.click();
     deleteButton.click();
     expect(tasks.getText()).toEqual([]);
   })
@@ -125,10 +113,10 @@ describe('TodoList', function() {
     it('displays "tasks" when remaning task is not 1', function() {
       expect(remainingTasks.getText()).toEqual('0 tasks left');
     })
-  })
 
-  it('does not accept an empty task', function() {
-    button.click();
-    expect(remainingTasks.getText()).toEqual('0 tasks left');
+    it('does not accept an empty task', function() {
+      button.click();
+      expect(remainingTasks.getText()).toEqual('0 tasks left');
+    })
   })
 })

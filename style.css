@@ -1,0 +1,44 @@
+.panel-heading {
+  text-align: center;
+}
+body {
+  margin: 80px auto 50px auto;
+  background-color: #bce0f1;
+  font-family: monospace;
+}
+.form-control {
+  width: 88%;
+  display: inline-block;
+}
+.filter {
+  margin-top: 10px;
+  width: 100px;
+  height: 30px;
+  border: 1px solid #ebccd1;
+  display: inline-block;
+  border-radius: 5px;
+  background-color: #f2dede;
+  color: #a94442;
+  line-height: 30px;
+  vertical-align: middle;
+}
+a .filter {
+  vertical-align: top;
+  text-align: center;
+}
+.completed div{
+
+  text-decoration: line-through;
+}
+ul {
+  margin-top: 20px;
+  list-style-type: none;
+}
+li .task {
+  margin: auto;
+  display: inline-block;
+}
+.deleteButton {
+  display: inline-block;
+  float: right;
+}
