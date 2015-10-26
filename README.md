@@ -7,7 +7,7 @@ This is the 8th weekend challenge, which is to create a todo list using AngularJ
 Getting Started
 -----
 ```
-$ gitclone git@github.com:jongmin141215/todo_challenge.git
+$ git clone git@github.com:jongmin141215/todo_challenge.git
 $ cd todo_challenge
 $ npm install
 $ bower install
