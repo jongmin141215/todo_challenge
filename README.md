@@ -1,6 +1,5 @@
 # Todo Challenge
-![status badge](http://docs.travis-ci.com/user/status-images/)
-
+===================
 This is the 8th weekend challenge, which is to create a todo list using AngularJS.
 
 ![Image of Homepage](images/homepage.png)
