@@ -25,7 +25,7 @@
         <ul id="list">
           <li ng-repeat="task in listCtrl.filtered" ng-class="listCtrl.className(task)" class="panel">
             <div class="task">
-              <input type="checkbox" id="checkbox{{$index}}" ng-model="task.complete">
+              <input type="checkbox" id="checkbox{{$index}}" ng-model="task.complete" ng-change="listCtrl.onTaskUpdate(task)">
               {{task.name}}
             </div>
             <div class="deleteButton">

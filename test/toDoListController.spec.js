@@ -3,17 +3,18 @@ describe('ToDoListController', function() {
   beforeEach(module('ToDoLists'));
   var ctrl;
   beforeEach(inject(function($controller) {
+    window.localStorage.clear()
     ctrl = $controller('ToDoListController');
-  }));
 
+  }));
   tasks = [
-    { name: 'Weekend challenge',
-      description: 'Creating todoList using AngularJS',
-      complete: false
+    { 'name': 'Weekend challenge',
+      'description': 'Creating todoList using AngularJS',
+      'complete': false
     },
-    { name: 'Calling my mom',
-      description: 'Asking her well-being',
-      complete: false
+    { 'name': 'Calling my mom',
+      'description': 'Asking her well-being',
+      'complete': false
     }
   ]
 
