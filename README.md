@@ -1,5 +1,5 @@
 # Todo Challenge
-===================
+
 This is the 8th weekend challenge, which is to create a todo list application using AngularJS. You can add & delete your tasks, and they are stored in your browser's local storage!
 
 ![Image of Homepage](images/homepage.png)
